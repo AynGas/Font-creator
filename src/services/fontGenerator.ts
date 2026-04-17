@@ -109,12 +109,10 @@ export async function generateFontBatches(
   onProgress: (progress: number, message: string) => void
 ): Promise<opentype.Font> {
   const batches = [
-    "ABCÇDEƏFGĞHX",
-    "IİJKQLMNOÖPR",
-    "SŞTUÜVYZ",
-    "abcçdeəfgğhx",
-    "ıijkqlmnoöpr",
-    "sştuüvyz0123456789.,!?"
+    "ABCÇDEƏFGĞHXIİJKQLM",
+    "NOÖPRSŞTUÜVYZ",
+    "abcçdeəfgğhxıijkqlm",
+    "noöprsştuüvyz0123456789.,!?"
   ];
 
   const allGlyphs: opentype.Glyph[] = [];
@@ -138,8 +136,8 @@ export async function generateFontBatches(
     onProgress((i / batches.length) * 100, `Generating characters: ${batch}`);
 
     if (i > 0) {
-      // Add a small delay between batches to help prevent rate limiting
-      await delay(5000);
+      // Reduced delay to speed up process while still respecting rate limits
+      await delay(2000);
     }
 
     try {
@@ -222,12 +220,10 @@ export async function generateFontFromImage(
   onProgress: (progress: number, message: string) => void
 ): Promise<opentype.Font> {
   const batches = [
-    "ABCÇDEƏFGĞHX",
-    "IİJKQLMNOÖPR",
-    "SŞTUÜVYZ",
-    "abcçdeəfgğhx",
-    "ıijkqlmnoöpr",
-    "sştuüvyz0123456789.,!?"
+    "ABCÇDEƏFGĞHXIİJKQLM",
+    "NOÖPRSŞTUÜVYZ",
+    "abcçdeəfgğhxıijkqlm",
+    "noöprsştuüvyz0123456789.,!?"
   ];
 
   const allGlyphs: opentype.Glyph[] = [];
@@ -251,8 +247,8 @@ export async function generateFontFromImage(
     onProgress((i / batches.length) * 100, `Extracting characters: ${batch}`);
 
     if (i > 0) {
-      // Add a small delay between batches to help prevent rate limiting
-      await delay(5000);
+      // Reduced delay to speed up process while still respecting rate limits
+      await delay(2000);
     }
 
     try {
